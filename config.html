@@ -19,14 +19,63 @@
   
   <body>
     
-    <!-- Put your awesome stuff here! -->
-    <select v-model="sourceWorksheet">
-      <option v-for="ws in worksheets" v-bind:value="ws">
-        {{ ws }}
-      </option>
-    </select>
-    
-    <button class="button is-link" @click="save">Save</button>
+    <section class="section" id="app">
+      <div class="container">
+        <h1 class="title">
+          Polar Area Chart Configuration
+        </h1>
+        <div class="field">
+          <label class="label">Source Worksheet</label>
+          <div class="control">
+            <div class="select is-fullwidth">
+              <select v-model="sourceWorksheet">
+                <option v-for="ws in worksheets" v-bind:value="ws">
+                  {{ ws }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Source Dimension</label>
+          <div class="control">
+            <div class="select is-fullwidth">
+              <select v-model="dimensionField">
+                <option v-for="f in fields" v-bind:value="f">
+                  {{ f }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Source Measure</label>
+          <div class="control">
+            <div class="select is-fullwidth">
+              <select v-model="measureField">
+                <option v-for="f in fields" v-bind:value="f">
+                  {{ f }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>        
+        <div class="field">
+          <label class="label">Filter Worksheet</label>
+          <div class="control">
+            <div class="select is-fullwidth">
+              <select v-model="filterWorksheet">
+                <option v-for="ws in worksheets" v-bind:value="ws">
+                  {{ ws }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <button class="button is-link" @click="save">Save</button>
+      </div>
+    </section>
     
   </body>
 </html>
