@@ -1,6 +1,6 @@
 /* global tableau Chart */
 tableau.extensions.initializeAsync({ configure: configure }).then(() => {
-  // ...
+  getData();
 });
 
 async function configure() {
@@ -10,7 +10,7 @@ async function configure() {
       width: 500,
       height: 600
     });
-    // ... more to come here ...
+    getData();
   } catch (error) {
     switch (error.errorCode) {
       case tableau.ErrorCodes.DialogClosedByUser:
