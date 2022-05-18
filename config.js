@@ -20,20 +20,40 @@ let app = new Vue({
       tableau.extensions.ui.closeDialog("");
     },
     getWorksheets: function() {
-      const worksheets = tableau.extensions.dashboardContent.dashboard.worksheets;
-      this.worksheets = [...worksheets.map((w) => w.name)];
+      const worksheets =
+        tableau.extensions.dashboardContent.dashboard.worksheets;
+      this.worksheets = [...worksheets.map(w => w.name)];
+
       const settings = tableau.extensions.settings.getAll();
-      this.sourceWorksheet = worksheets.find((w) => w.name === settings.sourceWorksheet) ? settings.sourceWorksheet : '';
-      this.filterWorksheet = worksheets.find((w) => w.name === settings.filterWorksheet) ? settings.filterWorksheet : '';
+      this.sourceWorksheet = worksheets.find(
+        w => w.name === settings.sourceWorksheet
+      )
+        ? settings.sourceWorksheet
+        : "";
+      this.filterWorksheet = worksheets.find(
+        w => w.name === settings.filterWorksheet
+      )
+        ? settings.filterWorksheet
+        : "";
     },
-    getFields: async function (worksheetName) {
-      const worksheets = tableau.extensions.dashboardContent.dashboard.worksheets;
-      const worksheet = worksheets.find((w) => w.name === worksheetName);
+    getFields: async function(worksheetName) {
+      const worksheets =
+        tableau.extensions.dashboardContent.dashboard.worksheets;
+      const worksheet = worksheets.find(w => w.name === worksheetName);
       const data = await worksheet.getSummaryDataAsync();
-      this.fields = [...data.columns.map((column) => column.fieldName)];
+      this.fields = [...data.columns.map(column => column.fieldName)];
+
       const settings = tableau.extensions.settings.getAll();
-      this.dimensionField = data.columns.find((c) => c.fieldName === settings.dimensionField) ? settings.dimensionField : '';
-      this.measureField = data.columns.find((c) => c.fieldName === settings.measureField) ? settings.measureField : '';
+      this.dimensionField = data.columns.find(
+        c => c.fieldName === settings.dimensionField
+      )
+        ? settings.dimensionField
+        : "";
+      this.measureField = data.columns.find(
+        c => c.fieldName === settings.measureField
+      )
+        ? settings.measureField
+        : "";
     }
   },
   watch: {
