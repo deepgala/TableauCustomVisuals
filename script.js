@@ -1,4 +1,5 @@
 /* global tableau Chart */
+
 tableau.extensions.initializeAsync({ configure: configure }).then(() => {
   getData();
 });
@@ -28,11 +29,11 @@ async function getData() {
   const worksheet = worksheets.find(ws => ws.name === settings.sourceWorksheet);
   const dataTable = await worksheet.getSummaryDataAsync();
   const dimensionFieldIndex = dataTable.columns.find(
-        column => column.fieldName === settings.dimensionField
-      ).index;
-    const measureFieldIndex = dataTable.columns.find(
-        column => column.fieldName === settings.measureField
-      ).index;
+    column => column.fieldName === settings.dimensionField
+  ).index;
+  const measureFieldIndex = dataTable.columns.find(
+    column => column.fieldName === settings.measureField
+  ).index;
 
   let data = [];
 
