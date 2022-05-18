@@ -15,6 +15,10 @@
   </head>
   <body>
     <!-- Put your awesome stuff here! -->
-    Hello World!
+    <select v-model="sourceWorksheet">
+      <option v-for="ws in worksheets" v-bind:value="ws">
+        {{ ws }}
+      </option>
+    </select>
   </body>
 </html>
